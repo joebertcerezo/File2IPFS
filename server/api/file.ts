@@ -12,61 +12,60 @@ export default defineEventHandler(async (event) => {
   }
 
   interface PinataUploadResponse {
-    data: PinataUploadData
-    ipfsUrl: string
-    gatewayUrl: string
+    data: PinataUploadData;
+    ipfsUrl: string;
+    gatewayUrl: string;
   }
 
-  const form = await readMultipartFormData(event)
+  const form = await readMultipartFormData(event);
+  const method = getMethod(event);
 
   if (!form || form.length === 0) {
     throw createError({
       statusCode: 400,
-      statusMessage: 'No file provided'
-    })
+      statusMessage: "No file provided",
+    });
   }
 
-  const fileData = form[0]
+  const fileData = form[0];
 
-
-  if (!fileData || !fileData.data || !fileData.filename) {
+  if (
+    !fileData ||
+    !fileData.data ||
+    !fileData.filename ||
+    fileData.type != "application/json"
+  ) {
     throw createError({
       statusCode: 400,
-      statusMessage: 'Invalid file data'
-    })
+      statusMessage: "Invalid file data",
+    });
   }
 
-  const file = new File([fileData.data], fileData.filename, {
-    type: fileData.type || 'application/octet-stream'
-  })
+  const file = new File([fileData.data], fileData.filename);
 
-  const formData = new FormData()
-  formData.append("file", file)
+  const formData = new FormData();
+  formData.append("file", file);
 
-  const headers = getHeaders(event)
-  const jwt = headers.authorization?.replace('Bearer ', '')
+  const headers = getHeaders(event);
+  const jwt = headers.authorization?.replace("Bearer ", "");
 
   if (!jwt) {
     throw createError({
       statusCode: 401,
-      statusMessage: 'JWT token required'
-    })
+      statusMessage: "JWT token required",
+    });
   }
-
 
   const uploadRequest: PinataUploadResponse = await $fetch(
     "https://api.pinata.cloud/pinning/pinFileToIPFS",
     {
-      method: "POST",
+      method,
       headers: {
-        Authorization: `Bearer ${jwt}`,
+        Authorization: headers.authorization || "",
       },
       body: formData,
     }
-  )
+  );
 
-  console.log(uploadRequest)
-
-  return uploadRequest
-
-})
+  return uploadRequest;
+});
