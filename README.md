@@ -1,163 +1,136 @@
 # File2IPFS
 
-A modern web application for uploading files to IPFS (InterPlanetary File System) using Pinata's pinning service. Built with Nuxt 4 and featuring a clean, responsive interface for seamless file uploads to the decentralized web.
+A modern web application that simplifies IPFS file uploads through Pinata, specifically designed for NFT developers who need to upload images and metadata JSON files to IPFS quickly and securely.
 
-## 🚀 Features
+## About
 
-- **Drag & Drop File Upload**: Intuitive file upload interface
-- **IPFS Integration**: Files are pinned to IPFS via Pinata for decentralized storage
-- **Real-time Upload Progress**: Visual feedback during file uploads
-- **Secure Authentication**: JWT-based authentication for Pinata API
-- **Responsive Design**: Works seamlessly across desktop and mobile devices
-- **File Management**: View uploaded files with IPFS hashes and gateway URLs
+File2IPFS is a user-friendly interface for uploading files to IPFS using Pinata's pinning service. The application streamlines the process of uploading NFT assets (images and JSON metadata) to IPFS, making it easier for developers to deploy their NFT collections without dealing with complex IPFS configurations.
 
-## 🛠️ Tech Stack
+### Key Features
+
+- 🔐 **Secure JWT Authentication** - Uses Pinata JWT tokens for secure API access
+- 🌐 **Custom Gateway Support** - Configure your own Pinata gateway for faster access
+- 📁 **Drag & Drop Upload** - Intuitive file upload interface
+- 🎨 **NFT-Focused** - Optimized for common NFT file types (images and JSON metadata)
+- ⚡ **Fast & Reliable** - Built with modern web technologies for optimal performance
+- 📱 **Responsive Design** - Works seamlessly across desktop and mobile devices
+
+## Tech Stack
+
+This project is built with modern web technologies:
 
 ### Frontend
-- **[Nuxt 4](https://nuxt.com/)** - Vue.js framework with SSR/SSG capabilities
-- **[Vue 3](https://vuejs.org/)** - Progressive JavaScript framework
-- **[TypeScript](https://www.typescriptlang.org/)** - Type-safe JavaScript
-- **[Tailwind CSS](https://tailwindcss.com/)** (likely) - Utility-first CSS framework
 
-### Backend
-- **[Nitro](https://nitro.unjs.io/)** - Server engine (built into Nuxt)
-- **[H3](https://h3.unjs.io/)** - HTTP framework for server-side API routes
-- **[Pinata API](https://docs.pinata.cloud/)** - IPFS pinning service
+- **[Nuxt.js 3](https://nuxt.com/)** - Full-stack Vue.js framework
+- **[Vue.js 3](https://vuejs.org/)** - Progressive JavaScript framework
+- **[TypeScript](https://www.typescriptlang.org/)** - Type-safe JavaScript
+- **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS framework
+- **[Shadcn/ui](https://ui.shadcn.com/)** - Modern component library
+
+### Backend & API
+
+- **[Nuxt Server API](https://nuxt.com/docs/guide/directory-structure/server)** - Server-side API routes
+- **[Pinata API](https://pinata.cloud/)** - IPFS pinning service
+- **[VueUse Integrations](https://vueuse.org/)** - Composition utilities (JWT handling, cookies)
 
 ### Development Tools
+
 - **[PNPM](https://pnpm.io/)** - Fast, disk space efficient package manager
-- **[Vite](https://vitejs.dev/)** - Build tool and dev server
-- **[ESLint](https://eslint.org/)** - Code linting
+- **[ESLint](https://eslint.org/)** - Code linting and quality
 - **[Prettier](https://prettier.io/)** - Code formatting
 
-### Storage & Infrastructure
-- **[IPFS](https://ipfs.io/)** - Distributed file system
-- **[Pinata](https://pinata.cloud/)** - IPFS pinning and gateway service
-- **[Unstorage](https://unstorage.unjs.io/)** - Universal storage layer
+## Use Cases for NFT Developers
 
-## 🚦 Getting Started
+### 🖼️ Image Upload
+
+- Upload NFT artwork and get IPFS hashes instantly
+- Support for common image formats (PNG, JPG, GIF, SVG, WebP)
+- Automatic IPFS URL generation for marketplace integration
+
+### 📄 Metadata Upload
+
+- Upload JSON metadata files containing NFT attributes
+- Validate JSON structure before uploading
+- Get IPFS links ready for smart contract deployment
+
+### 🚀 Collection Deployment
+
+- Batch upload multiple assets for NFT collections
+- Consistent naming and organization
+- Quick integration with popular NFT marketplaces (OpenSea, Rarible, etc.)
+
+## Getting Started
 
 ### Prerequisites
 
-- Node.js 18+ or Bun
-- PNPM (recommended) or npm
-- Pinata account and API key
+- Node.js 18+
+- PNPM package manager
+- Pinata account and JWT token
 
 ### Installation
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yourusername/file2ipfs.git
-   cd file2ipfs
-   ```
-
-2. **Install dependencies**
-   ```bash
-   pnpm install
-   ```
-
-3. **Environment Setup**
-   Create a `.env` file in the root directory:
-   ```env
-   PINATA_JWT=your_pinata_jwt_token_here
-   GATEWAY_URL=your_pinata_gateway_url_here
-   ```
-
-4. **Development Server**
-   ```bash
-   pnpm dev
-   ```
-
-   The application will be available at `http://localhost:3000`
-
-## 📁 Project Structure
-
-```
-file2ipfs/
-├── app/                    # Nuxt 4 app directory
-│   ├── app.vue            # Main app component
-│   └── ...
-├── server/                # Server-side code
-│   └── api/
-│       └── file.ts        # File upload API endpoint
-├── public/                # Static assets
-├── .nuxt/                 # Auto-generated Nuxt files
-├── components.json        # UI components configuration
-├── nuxt.config.ts         # Nuxt configuration
-└── package.json
-```
-
-## 🔧 API Endpoints
-
-### POST `/api/file`
-
-Upload a file to IPFS via Pinata.
-
-**Request:**
-- Method: `POST`
-- Content-Type: `multipart/form-data`
-- Headers: `Authorization: Bearer <PINATA_JWT>`
-- Body: FormData with file
-
-**Response:**
-```json
-{
-  "IpfsHash": "QmYourFileHashHere",
-  "PinSize": 1234567,
-  "Timestamp": "2024-01-01T00:00:00.000Z",
-  "Name": "filename.ext",
-  "ipfsUrl": "ipfs://QmYourFileHashHere",
-  "gatewayUrl": "https://gateway.pinata.cloud/ipfs/QmYourFileHashHere"
-}
-```
-
-## 🎯 Usage
-
-1. **Upload Files**: Drag and drop files or click to select files for upload
-2. **Authentication**: Provide your Pinata JWT token for authentication
-3. **View Results**: Get IPFS hash and gateway URLs for your uploaded files
-4. **Access Files**: Use the IPFS hash or gateway URL to access your files
-
-## 🚀 Deployment
-
-### Build for Production
+1. Clone the repository:
 
 ```bash
-pnpm build
+git clone https://github.com/joebertcerezo/File2IPFS.git
+cd File2IPFS
 ```
 
-### Preview Production Build
+2. Install dependencies:
 
 ```bash
-pnpm preview
+pnpm install
 ```
 
-### Deploy to Vercel/Netlify
+3. Start the development server:
 
-The project is ready for deployment on modern hosting platforms that support Nuxt applications.
+```bash
+pnpm dev
+```
 
-## 🤝 Contributing
+4. Open your browser and navigate to `http://localhost:3000`
 
-1. Fork the project
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+### Configuration
 
-## 📄 License
+1. **Get your Pinata JWT token**:
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+   - Sign up at [Pinata.cloud](https://pinata.cloud/)
+   - Generate a JWT token from your API keys section
 
-## 🙏 Acknowledgments
+2. **Configure your gateway** (optional):
 
-- [Pinata](https://pinata.cloud/) for IPFS pinning services
-- [Nuxt Team](https://nuxt.com/) for the amazing framework
-- [IPFS](https://ipfs.io/) for decentralized storage technology
+   - Set up a custom Pinata gateway for faster access
+   - Use format: `your-gateway.mypinata.cloud`
 
-## 📞 Support
+3. **Enter credentials**:
+   - Paste your JWT token in the configuration panel
+   - Add your gateway URL if using a custom gateway
+   - Click "Configure" to save settings
 
-If you have any questions or need help, please open an issue on GitHub.
+## How It Works
+
+1. **Authentication**: Enter your Pinata JWT token for secure API access
+2. **Gateway Setup**: Configure your preferred IPFS gateway (optional)
+3. **File Upload**: Drag and drop or select files to upload
+4. **IPFS Integration**: Files are automatically pinned to IPFS via Pinata
+5. **URL Generation**: Get instant IPFS URLs for your uploaded files
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## Support
+
+If you find this project helpful for your NFT development workflow, please consider:
+
+- ⭐ Starring this repository
+- 🐛 Reporting bugs or requesting features
+- 🤝 Contributing to the codebase
 
 ---
 
-**Made with ❤️ and the power of decentralized storage**
+**Made for Web3 developers, by developers** 🚀
