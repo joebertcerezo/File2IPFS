@@ -13,12 +13,6 @@ export default defineEventHandler(async (event) => {
     Keyvalues: Record<string, any> | null;
   }
 
-  interface PinataUploadResponse {
-    data: PinataUploadData;
-    ipfsUrl: string;
-    gatewayUrl: string;
-  }
-
   const form = await readMultipartFormData(event);
   const method = getMethod(event);
 
@@ -42,23 +36,21 @@ export default defineEventHandler(async (event) => {
       statusMessage: "Invalid file data",
     });
   }
-
-  const file = new File([fileData.data], fileData.filename);
+  const arrayBuffer = new Uint8Array(fileData.data);
+  const file = new File([arrayBuffer], fileData.filename);
 
   const formData = new FormData();
   formData.append("file", file);
 
   const headers = getHeaders(event);
   const jwt = headers.authorization?.replace("Bearer ", "");
-  
+
   if (!jwt) {
     throw createError({
       statusCode: 401,
       statusMessage: "JWT token required",
     });
   }
-  const { header, payload } = useJwt(jwt);
-
   const uploadRequest: PinataUploadData = await $fetch(
     "https://api.pinata.cloud/pinning/pinFileToIPFS",
     {
@@ -69,7 +61,5 @@ export default defineEventHandler(async (event) => {
       body: formData,
     }
   );
-  console.log(uploadRequest)
-
   return uploadRequest;
 });
