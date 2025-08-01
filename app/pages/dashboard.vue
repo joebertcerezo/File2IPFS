@@ -1,6 +1,5 @@
 <template>
   <section>
-    <!-- Configuration Panel -->
     <div
       class="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20 shadow-2xl"
     >
