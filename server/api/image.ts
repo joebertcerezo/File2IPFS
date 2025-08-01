@@ -29,7 +29,7 @@ export default defineEventHandler(async (event) => {
     !fileData ||
     !fileData.data ||
     !fileData.filename ||
-    fileData.type != "application/json"
+    !fileData.type?.startsWith("image/")
   ) {
     throw createError({
       statusCode: 400,
