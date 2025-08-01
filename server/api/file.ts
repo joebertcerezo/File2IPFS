@@ -1,3 +1,5 @@
+import { useJwt } from "@vueuse/integrations/useJwt";
+
 export default defineEventHandler(async (event) => {
   interface PinataUploadData {
     IpfsHash: string;
@@ -48,15 +50,16 @@ export default defineEventHandler(async (event) => {
 
   const headers = getHeaders(event);
   const jwt = headers.authorization?.replace("Bearer ", "");
-
+  
   if (!jwt) {
     throw createError({
       statusCode: 401,
       statusMessage: "JWT token required",
     });
   }
+  const { header, payload } = useJwt(jwt);
 
-  const uploadRequest: PinataUploadResponse = await $fetch(
+  const uploadRequest: PinataUploadData = await $fetch(
     "https://api.pinata.cloud/pinning/pinFileToIPFS",
     {
       method,
@@ -66,6 +69,7 @@ export default defineEventHandler(async (event) => {
       body: formData,
     }
   );
+  console.log(uploadRequest)
 
   return uploadRequest;
 });
