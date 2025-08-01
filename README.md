@@ -115,6 +115,9 @@ pnpm dev
 4. **IPFS Integration**: Files are automatically pinned to IPFS via Pinata
 5. **URL Generation**: Get instant IPFS URLs for your uploaded files
 
+## Screenshots
+<img width="1600" height="722" alt="image" src="https://github.com/user-attachments/assets/a84c552e-6399-41c1-966d-01fc9ce62760" />
+
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
