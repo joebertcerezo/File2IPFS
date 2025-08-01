@@ -153,6 +153,7 @@ const saveConfig = () => {
   if (isConfigured.value) {
     if (payload.value) {
       useCookies().set("jwt", jwt.value);
+      useCookies().set("gatewayUrl", gateway.value);
       navigateTo("/dashboard");
     }
   }
