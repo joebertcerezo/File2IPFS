@@ -1,33 +1,23 @@
 Release Notes
 
- - 25fee5b2 Update file.ts
- - ac1ec6d0 Update README.md
- - be7f818d Update package.json
- - d144d746 Update index.vue
- - 33f83830 Update dashboard.vue
- - f49c0f19 Update file.ts
- - 280ad0ab Update dashboard.vue
- - 9650dbb8 Create tsconfig.json
- - 69ee845e Create file.ts
- - 343393a9 Create README.md
- - f0e86dee Create robots.txt
- - 6c61f617 Create favicon.ico
- - 9e2dd574 Create pnpm-lock.yaml
- - 20855425 Create package.json
- - 3349c683 Create nuxt.config.ts
- - 8577e5c0 Create components.json
- - 6c70505f Create index.vue
- - 4d0d87eb Create dashboard.vue
- - f135d211 Create auth.global.ts
- - bc790068 Create utils.ts
- - b918f51f Create default.vue
- - a02f1daa Create Label.vue
- - 00d3d7bb Create index.ts
- - e6db06d7 Create Input.vue
- - dc6f6ceb Create index.ts
- - 26def6b6 Create index.ts
- - 494f6d5e Create Button.vue
- - 0de6e410 Create main.css
- - 7490a07a Create app.vue
- - 815ae2e2 Create .gitignore
- - 874069b0 Initial commit
+- 39041ed8 Merge pull request #2 from joebertcerezo/feature/seo
+- fe5d32e0 Add favicon
+- 47de46ce Improve SEO
+- 68bb5f6c Edit nuxt config
+- d030e8b0 Merge pull request #1 from joebertcerezo/develop
+- 95ec5933 Create image.ts
+- f7d7e37c Update file.ts
+- abf5333b Create \_redirects
+- 232e1931 Update pnpm-lock.yaml
+- 433d4f31 Update package.json
+- 846cb2e6 Update dashboard.vue
+- af6a0035 Create ImageUpload.vue
+- effe52df Create FileUpload.vue
+- 06d3658c Update main.css
+- 8af98992 Update .gitignore
+- 0ee643f0 asdf
+- 4f8a55c3 Update README.md
+- 0f0baa62 Create CODE_OF_CONDUCT.md
+- 6a9b7c56 Create LICENSE
+- 9b575e4f Merge branch 'release/v0.1.0'
+- e03447a9 Add CHANGELOG.md
