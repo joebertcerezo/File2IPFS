@@ -1,0 +1,6 @@
+User-Agent: *
+Allow: /
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://file2ipfs.netlify.app/sitemap.xml
