@@ -1,3 +1,7 @@
+<script setup>
+
+</script>
+
 <template>
   <section>
     <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20 shadow-2xl">
@@ -29,6 +33,25 @@
 
 <script lang="ts" setup>
 import { useJwt } from "@vueuse/integrations/useJwt";
+
+// SEO Meta tags for the dashboard page
+useSeoMeta({
+  title: 'Dashboard - File2IPFS Upload Interface',
+  ogTitle: 'Dashboard - File2IPFS Upload Interface',
+  description: 'File upload dashboard for IPFS storage via Pinata. Upload images and JSON metadata files with drag & drop interface and get instant IPFS hashes.',
+  ogDescription: 'File upload dashboard for IPFS storage via Pinata. Upload images and JSON metadata files with drag & drop interface and get instant IPFS hashes.',
+  ogImage: 'https://file2ipfs.netlify.app/og-image.jpg',
+  twitterCard: 'summary_large_image',
+  twitterImage: 'https://file2ipfs.netlify.app/og-image.jpg',
+  keywords: 'IPFS dashboard, file upload interface, Pinata dashboard, NFT file upload, decentralized storage dashboard',
+  robots: 'index, follow'
+})
+
+useHead({
+  link: [
+    { rel: 'canonical', href: 'https://file2ipfs.netlify.app/dashboard' }
+  ]
+})
 
 const cookie = useCookie("jwt").value;
 
