@@ -23,5 +23,11 @@ export default defineNuxtConfig({
      * @default "./components/ui"
      */
     componentDir: '@/components/ui'
+  },
+
+  app: {
+    head: {
+      title: "File2IPFS"
+    }
   }
 })
