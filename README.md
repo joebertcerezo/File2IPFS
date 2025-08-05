@@ -136,4 +136,4 @@ If you find this project helpful for your NFT development workflow, please consi
 
 ---
 
-**Made for Web3 developers, by developers** 🚀
+**Made for Web3 developers, by developers 🚀** 
